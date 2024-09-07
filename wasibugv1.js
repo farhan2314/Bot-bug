@@ -1136,7 +1136,7 @@ module.exports = XeonBotInc = async (XeonBotInc, m, msg, chatUpdate, store) => {
           replygcxeon(`Berhasil Mengubah AutoBio Menjadi ${q}`);
         }
         break;
-      case 'setbio':
+      case 'setbiobot':
         if (!isCreator) return replygcxeon(mess.owner)
         if (args.length < 1) return replygcxeon('Mohon masukkan bio baru setelah perintah. Contoh: setbio Bio baru saya');
         const newBio = args.join(' ').slice(0, 139);
@@ -1152,6 +1152,20 @@ module.exports = XeonBotInc = async (XeonBotInc, m, msg, chatUpdate, store) => {
           }
         }
         break
+        case "setnamebot":
+  {
+    if (!isCreator) return replygcxeon(mess.owner);
+    if (!text) return replygcxeon("Masukkan nama baru untuk bot");
+    let newName = args.join(" ");
+    try {
+      await XeonBotInc.updateProfileName(newName);
+      replygcxeon(`Nama bot berhasil diubah menjadi: ${newName}`);
+    } catch (error) {
+      console.error('Error saat mengubah nama bot:', error);
+      replygcxeon('Terjadi kesalahan saat mengubah nama bot. Silakan coba lagi nanti.');
+    }
+  }
+  break;
       case "mode":
         if (!isCreator) return replygcxeon(mess.owner);
         if (args.length < 1)
