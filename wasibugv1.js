@@ -154,29 +154,29 @@ module.exports = XeonBotInc = async (XeonBotInc, m, msg, chatUpdate, store) => {
       m.mtype === "conversation"
         ? m.message.conversation
         : m.mtype == "imageMessage"
-        ? m.message.imageMessage.caption
-        : m.mtype == "videoMessage"
-        ? m.message.videoMessage.caption
-        : m.mtype == "extendedTextMessage"
-        ? m.message.extendedTextMessage.text
-        : m.mtype == "buttonsResponseMessage"
-        ? m.message.buttonsResponseMessage.selectedButtonId
-        : m.mtype == "listResponseMessage"
-        ? m.message.listResponseMessage.singleSelectreplygcxeon.selectedRowId
-        : m.mtype == "templateButtonreplygcxeonMessage"
-        ? m.message.templateButtonreplygcxeonMessage.selectedId
-        : m.mtype === "messageContextInfo"
-        ? m.message.buttonsResponseMessage?.selectedButtonId ||
-          m.message.listResponseMessage?.singleSelectreplygcxeon
-            .selectedRowId ||
-          m.text
-        : "";
+          ? m.message.imageMessage.caption
+          : m.mtype == "videoMessage"
+            ? m.message.videoMessage.caption
+            : m.mtype == "extendedTextMessage"
+              ? m.message.extendedTextMessage.text
+              : m.mtype == "buttonsResponseMessage"
+                ? m.message.buttonsResponseMessage.selectedButtonId
+                : m.mtype == "listResponseMessage"
+                  ? m.message.listResponseMessage.singleSelectreplygcxeon.selectedRowId
+                  : m.mtype == "templateButtonreplygcxeonMessage"
+                    ? m.message.templateButtonreplygcxeonMessage.selectedId
+                    : m.mtype === "messageContextInfo"
+                      ? m.message.buttonsResponseMessage?.selectedButtonId ||
+                      m.message.listResponseMessage?.singleSelectreplygcxeon
+                        .selectedRowId ||
+                      m.text
+                      : "";
     var budy = typeof m.text == "string" ? m.text.toLowerCase() : "";
     var prefix = prefa
       ? /^[Â°â€¢Ï€Ã·Ã—Â¶âˆ†Â£Â¢â‚¬Â¥Â®â„¢+âœ“_=|~!?@#$%^&.Â©^]/gi.test(body)
         ? body.match(
-            /^[Â°â€¢Ï€Ã·Ã—Â¶âˆ†Â£Â¢â‚¬Â¥Â®â„¢+âœ“_=|~!?@#$%^&.Â©^]/gi
-          )[0]
+          /^[Â°â€¢Ï€Ã·Ã—Â¶âˆ†Â£Â¢â‚¬Â¥Â®â„¢+âœ“_=|~!?@#$%^&.Â©^]/gi
+        )[0]
         : ""
       : prefa ?? global.prefix;
     const isCmd = body.startsWith(prefix);
@@ -199,12 +199,12 @@ module.exports = XeonBotInc = async (XeonBotInc, m, msg, chatUpdate, store) => {
       fatkuns.mtype == "buttonsMessage"
         ? fatkuns[Object.keys(fatkuns)[1]]
         : fatkuns.mtype == "templateMessage"
-        ? fatkuns.hydratedTemplate[Object.keys(fatkuns.hydratedTemplate)[1]]
-        : fatkuns.mtype == "product"
-        ? fatkuns[Object.keys(fatkuns)[0]]
-        : m.quoted
-        ? m.quoted
-        : m;
+          ? fatkuns.hydratedTemplate[Object.keys(fatkuns.hydratedTemplate)[1]]
+          : fatkuns.mtype == "product"
+            ? fatkuns[Object.keys(fatkuns)[0]]
+            : m.quoted
+              ? m.quoted
+              : m;
     const mime = (quoted.msg || quoted).mimetype || "";
     const qmsg = quoted.msg || quoted;
     const isMedia = /image|video|sticker|audio/.test(mime);
@@ -233,7 +233,7 @@ module.exports = XeonBotInc = async (XeonBotInc, m, msg, chatUpdate, store) => {
     const isAfkOn = afk.checkAfkUser(m.sender, _afk);
     const isGroup = m.key.remoteJid.endsWith("@g.us");
     const groupMetadata = m.isGroup
-      ? await XeonBotInc.groupMetadata(m.chat).catch((e) => {})
+      ? await XeonBotInc.groupMetadata(m.chat).catch((e) => { })
       : "";
     const groupName = m.isGroup ? groupMetadata.subject : "";
     const participants = m.isGroup ? await groupMetadata.participants : "";
@@ -252,7 +252,7 @@ module.exports = XeonBotInc = async (XeonBotInc, m, msg, chatUpdate, store) => {
     const clientId = XeonBotInc.user.id.split(":")[0];
     const senderbot = m.key.fromMe
       ? XeonBotInc.user.id.split(":")[0] + "@s.whatsapp.net" ||
-        XeonBotInc.user.id
+      XeonBotInc.user.id
       : m.key.participant || m.key.remoteJid;
     const senderId = senderbot.split("@")[0];
     const isBot = clientId.includes(senderId);
@@ -745,8 +745,8 @@ module.exports = XeonBotInc = async (XeonBotInc, m, msg, chatUpdate, store) => {
         chalk.black(chalk.bgWhite("[ MESSAGE ]")),
         chalk.black(chalk.bgGreen(new Date())),
         chalk.black(chalk.bgBlue(budy || m.mtype)) +
-          "\n" +
-          chalk.magenta("=> From"),
+        "\n" +
+        chalk.magenta("=> From"),
         chalk.green(pushname),
         chalk.yellow(m.sender) + "\n" + chalk.blueBright("=> In"),
         chalk.green(groupName, m.chat)
@@ -760,8 +760,8 @@ module.exports = XeonBotInc = async (XeonBotInc, m, msg, chatUpdate, store) => {
         chalk.black(chalk.bgWhite("[ MESSAGE ]")),
         chalk.black(chalk.bgGreen(new Date())),
         chalk.black(chalk.bgBlue(budy || m.mtype)) +
-          "\n" +
-          chalk.magenta("=> From"),
+        "\n" +
+        chalk.magenta("=> From"),
         chalk.green(pushname),
         chalk.yellow(m.sender)
       );
@@ -908,7 +908,7 @@ module.exports = XeonBotInc = async (XeonBotInc, m, msg, chatUpdate, store) => {
           replygcxeon("Success");
         }
         break;
-        case "menu":
+      case "menu":
       case "help":
       case "alive":
       case "bot":
@@ -1136,22 +1136,22 @@ module.exports = XeonBotInc = async (XeonBotInc, m, msg, chatUpdate, store) => {
           replygcxeon(`Berhasil Mengubah AutoBio Menjadi ${q}`);
         }
         break;
-        case 'setbio':
-          if (!isCreator) return replygcxeon(mess.owner)
-          if (args.length < 1) return replygcxeon('Mohon masukkan bio baru setelah perintah. Contoh: setbio Bio baru saya');
-          const newBio = args.join(' ').slice(0, 139);
-          try {
-            await XeonBotInc.updateProfileStatus(newBio);
-            replygcxeon(`Bio berhasil diubah menjadi: ${newBio}`);
-          } catch (error) {
-            console.error('Error saat mengubah bio:', error);
-            if (error.data === 406) {
-              replygcxeon('Gagal mengubah bio. Pastikan bio tidak mengandung karakter khusus dan tidak terlalu panjang.');
-            } else {
-              replygcxeon('Terjadi kesalahan saat mengubah bio. Silakan coba lagi nanti.');
-            }
+      case 'setbio':
+        if (!isCreator) return replygcxeon(mess.owner)
+        if (args.length < 1) return replygcxeon('Mohon masukkan bio baru setelah perintah. Contoh: setbio Bio baru saya');
+        const newBio = args.join(' ').slice(0, 139);
+        try {
+          await XeonBotInc.updateProfileStatus(newBio);
+          replygcxeon(`Bio berhasil diubah menjadi: ${newBio}`);
+        } catch (error) {
+          console.error('Error saat mengubah bio:', error);
+          if (error.data === 406) {
+            replygcxeon('Gagal mengubah bio. Pastikan bio tidak mengandung karakter khusus dan tidak terlalu panjang.');
+          } else {
+            replygcxeon('Terjadi kesalahan saat mengubah bio. Silakan coba lagi nanti.');
           }
-          break
+        }
+        break
       case "mode":
         if (!isCreator) return replygcxeon(mess.owner);
         if (args.length < 1)
@@ -1228,8 +1228,8 @@ module.exports = XeonBotInc = async (XeonBotInc, m, msg, chatUpdate, store) => {
         let blockw = m.mentionedJid[0]
           ? m.mentionedJid[0]
           : m.quoted
-          ? m.quoted.sender
-          : text.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
+            ? m.quoted.sender
+            : text.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
         await XeonBotInc.updateBlockStatus(blockw, "block")
           .then((res) => replygcxeon(json(res)))
           .catch((err) => replygcxeon(json(err)));
@@ -1239,8 +1239,8 @@ module.exports = XeonBotInc = async (XeonBotInc, m, msg, chatUpdate, store) => {
         let blockww = m.mentionedJid[0]
           ? m.mentionedJid[0]
           : m.quoted
-          ? m.quoted.sender
-          : text.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
+            ? m.quoted.sender
+            : text.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
         await XeonBotInc.updateBlockStatus(blockww, "unblock")
           .then((res) => replygcxeon(json(res)))
           .catch((err) => replygcxeon(json(err)));
@@ -1275,8 +1275,7 @@ module.exports = XeonBotInc = async (XeonBotInc, m, msg, chatUpdate, store) => {
           if (!isCreator) return replygcxeon(mess.owner);
           if (!text)
             return replygcxeon(
-              `Which text?\n\nContoh : ${
-                prefix + command
+              `Which text?\n\nContoh : ${prefix + command
               } It's holiday tomorrow `
             );
           let getGroups = await XeonBotInc.groupFetchAllParticipating();
@@ -1285,8 +1284,7 @@ module.exports = XeonBotInc = async (XeonBotInc, m, msg, chatUpdate, store) => {
             .map((entry) => entry[1]);
           let anu = groups.map((v) => v.id);
           replygcxeon(
-            `Send Broadcast To ${anu.length} Group Chat, End Time ${
-              anu.length * 1.5
+            `Send Broadcast To ${anu.length} Group Chat, End Time ${anu.length * 1.5
             } second`
           );
           for (let i of anu) {
@@ -1327,25 +1325,25 @@ module.exports = XeonBotInc = async (XeonBotInc, m, msg, chatUpdate, store) => {
       //   replygcxeon(`${getCase(q)}`);
       //   break;
       case "getcase":
-    if (!isCreator) return replygcxeon(mess.owner);
-    const getCase = (cases) => {
-        try {
+        if (!isCreator) return replygcxeon(mess.owner);
+        const getCase = (cases) => {
+          try {
             const fileContent = fs.readFileSync("wasibugv1.js", "utf8");
             const casePattern = new RegExp(`case\\s*'${cases}'[\\s\\S]*?break`, "i");
             const match = fileContent.match(casePattern);
-            
+
             if (match) {
-                return match[0];
+              return match[0];
             } else {
-                return `Case '${cases}' not found in the file.`;
+              return `Case '${cases}' not found in the file.`;
             }
-        } catch (error) {
+          } catch (error) {
             console.error("Error in getCase function:", error);
             return `Error occurred while processing case '${cases}': ${error.message}`;
-        }
-    };
-    replygcxeon(`${getCase(q)}`);
-    break;
+          }
+        };
+        replygcxeon(`${getCase(q)}`);
+        break;
       case "delete":
       case "del":
         {
@@ -1423,8 +1421,8 @@ module.exports = XeonBotInc = async (XeonBotInc, m, msg, chatUpdate, store) => {
         let blockwww = m.mentionedJid[0]
           ? m.mentionedJid[0]
           : m.quoted
-          ? m.quoted.sender
-          : text.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
+            ? m.quoted.sender
+            : text.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
         await XeonBotInc.groupParticipantsUpdate(m.chat, [blockwww], "remove")
           .then((res) => replygcxeon(json(res)))
           .catch((err) => replygcxeon(json(err)));
@@ -1449,8 +1447,8 @@ module.exports = XeonBotInc = async (XeonBotInc, m, msg, chatUpdate, store) => {
         let blockwwwww = m.mentionedJid[0]
           ? m.mentionedJid[0]
           : m.quoted
-          ? m.quoted.sender
-          : text.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
+            ? m.quoted.sender
+            : text.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
         await XeonBotInc.groupParticipantsUpdate(
           m.chat,
           [blockwwwww],
@@ -1467,8 +1465,8 @@ module.exports = XeonBotInc = async (XeonBotInc, m, msg, chatUpdate, store) => {
         let blockwwwwwa = m.mentionedJid[0]
           ? m.mentionedJid[0]
           : m.quoted
-          ? m.quoted.sender
-          : text.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
+            ? m.quoted.sender
+            : text.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
         await XeonBotInc.groupParticipantsUpdate(
           m.chat,
           [blockwwwwwa],
@@ -1653,16 +1651,12 @@ module.exports = XeonBotInc = async (XeonBotInc, m, msg, chatUpdate, store) => {
         let response = await XeonBotInc.groupInviteCode(m.chat);
         XeonBotInc.sendText(
           m.chat,
-          `*GROUP LINK INFO*\n› *Name :* ${
-            groupMetadata.subject
-          }\n*Group Owner :* ${
-            groupMetadata.owner !== undefined
-              ? "@" + groupMetadata.owner.split`@`[0]
-              : "Not known"
-          }\n*ID :* ${
-            groupMetadata.id
-          }\n— *Chat Link :* https://chat.whatsapp.com/${response}\n *Member :* ${
-            groupMetadata.participants.length
+          `*GROUP LINK INFO*\n› *Name :* ${groupMetadata.subject
+          }\n*Group Owner :* ${groupMetadata.owner !== undefined
+            ? "@" + groupMetadata.owner.split`@`[0]
+            : "Not known"
+          }\n*ID :* ${groupMetadata.id
+          }\n— *Chat Link :* https://chat.whatsapp.com/${response}\n *Member :* ${groupMetadata.participants.length
           }\n`,
           m,
           {
@@ -1723,54 +1717,52 @@ module.exports = XeonBotInc = async (XeonBotInc, m, msg, chatUpdate, store) => {
           neww = performance.now();
           oldd = performance.now();
           respon = `
-Response Speed ${latensi.toFixed(4)} _Second_ \n ${
-            oldd - neww
-          } _miliseconds_\n\nRuntime : ${runtime(process.uptime())}
+Response Speed ${latensi.toFixed(4)} _Second_ \n ${oldd - neww
+            } _miliseconds_\n\nRuntime : ${runtime(process.uptime())}
 
 Info Server
 RAM: ${formatp(os.totalmem() - os.freemem())} / ${formatp(os.totalmem())}
 
 _NodeJS Memory Usaage_
 ${Object.keys(used)
-  .map(
-    (key, _, arr) =>
-      `${key.padEnd(Math.max(...arr.map((v) => v.length)), " ")}: ${formatp(
-        used[key]
-      )}`
-  )
-  .join("\n")}
+              .map(
+                (key, _, arr) =>
+                  `${key.padEnd(Math.max(...arr.map((v) => v.length)), " ")}: ${formatp(
+                    used[key]
+                  )}`
+              )
+              .join("\n")}
 
-${
-  cpus[0]
-    ? `_Total CPU Usage_
+${cpus[0]
+              ? `_Total CPU Usage_
 ${cpus[0].model.trim()} (${cpu.speed} MHZ)\n${Object.keys(cpu.times)
-        .map(
-          (type) =>
-            `- *${(type + "*").padEnd(6)}: ${(
-              (100 * cpu.times[type]) /
-              cpu.total
-            ).toFixed(2)}%`
-        )
-        .join("\n")}
+                .map(
+                  (type) =>
+                    `- *${(type + "*").padEnd(6)}: ${(
+                      (100 * cpu.times[type]) /
+                      cpu.total
+                    ).toFixed(2)}%`
+                )
+                .join("\n")}
 _CPU Core(s) Usage (${cpus.length} Core CPU)_
 ${cpus
-  .map(
-    (cpu, i) =>
-      `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Object.keys(
-        cpu.times
-      )
-        .map(
-          (type) =>
-            `- *${(type + "*").padEnd(6)}: ${(
-              (100 * cpu.times[type]) /
-              cpu.total
-            ).toFixed(2)}%`
-        )
-        .join("\n")}`
-  )
-  .join("\n\n")}`
-    : ""
-}
+                .map(
+                  (cpu, i) =>
+                    `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Object.keys(
+                      cpu.times
+                    )
+                      .map(
+                        (type) =>
+                          `- *${(type + "*").padEnd(6)}: ${(
+                            (100 * cpu.times[type]) /
+                            cpu.total
+                          ).toFixed(2)}%`
+                      )
+                      .join("\n")}`
+                )
+                .join("\n\n")}`
+              : ""
+            }
 `.trim();
           await XeonBotInc.sendMessage(
             m.chat,
@@ -1822,9 +1814,8 @@ ${cpus
           neww = performance.now();
           oldd = performance.now();
           respon = `
-Response Speed ${latensi.toFixed(4)} _Second_ \n ${
-            oldd - neww
-          } _miliseconds_\n\nRuntime : ${runtime(process.uptime())}
+Response Speed ${latensi.toFixed(4)} _Second_ \n ${oldd - neww
+            } _miliseconds_\n\nRuntime : ${runtime(process.uptime())}
 `.trim();
           await XeonBotInc.sendMessage(
             m.chat,
@@ -1938,8 +1929,7 @@ Response Speed ${latensi.toFixed(4)} _Second_ \n ${
             await fs.unlinkSync(encmedia);
           } else {
             return replygcxeon(
-              `Send Images/Videos With Captions ${
-                prefix + command
+              `Send Images/Videos With Captions ${prefix + command
               }\nVideo Duration 1-9 Seconds`
             );
           }
@@ -1947,9 +1937,8 @@ Response Speed ${latensi.toFixed(4)} _Second_ \n ${
         break;
       case "smeme":
         {
-          let respond = `Send/Reply image/sticker with caption ${
-            prefix + command
-          } text1|text2`;
+          let respond = `Send/Reply image/sticker with caption ${prefix + command
+            } text1|text2`;
           if (!/image/.test(mime)) return replygcxeon(respond);
           if (!text) return replygcxeon(respond);
           replygcxeon(mess.wait);
@@ -2063,8 +2052,7 @@ Response Speed ${latensi.toFixed(4)} _Second_ \n ${
         {
           if (!/video/.test(mime) && !/audio/.test(mime))
             return replygcxeon(
-              `Send/Reply Video/Audio that you want to make into audio with caption ${
-                prefix + command
+              `Send/Reply Video/Audio that you want to make into audio with caption ${prefix + command
               }`
             );
           replygcxeon(mess.wait);
@@ -2086,8 +2074,7 @@ Response Speed ${latensi.toFixed(4)} _Second_ \n ${
         {
           if (!/video/.test(mime) && !/audio/.test(mime))
             return replygcxeon(
-              `Send/Reply Video/Audio that you want to make into MP3 with caption ${
-                prefix + command
+              `Send/Reply Video/Audio that you want to make into MP3 with caption ${prefix + command
               }`
             );
           replygcxeon(mess.wait);
@@ -2111,8 +2098,7 @@ Response Speed ${latensi.toFixed(4)} _Second_ \n ${
         {
           if (!/video/.test(mime) && !/audio/.test(mime))
             return replygcxeon(
-              `Reply Video/Audio that you want to make into a VN with caption ${
-                prefix + command
+              `Reply Video/Audio that you want to make into a VN with caption ${prefix + command
               }`
             );
           replygcxeon(mess.wait);
@@ -2326,8 +2312,7 @@ Response Speed ${latensi.toFixed(4)} _Second_ \n ${
         if (!isCreator) return replygcxeon(mess.owner);
         if (!args[0])
           return replygcxeon(
-            `Use ${prefix + command} number\nContoh ${
-              prefix + command
+            `Use ${prefix + command} number\nContoh ${prefix + command
             } ${ownernumber}`
           );
         bnnd = q.split("|")[0].replace(/[^0-9]/g, "");
@@ -2344,8 +2329,7 @@ Response Speed ${latensi.toFixed(4)} _Second_ \n ${
         if (!isCreator) return replygcxeon(mess.owner);
         if (!args[0])
           return replygcxeon(
-            `Use ${prefix + command} nomor\nContoh ${
-              prefix + command
+            `Use ${prefix + command} nomor\nContoh ${prefix + command
             } 628xxxxxxxxxx`
           );
         ya = q.split("|")[0].replace(/[^0-9]/g, "");
@@ -2502,6 +2486,25 @@ Response Speed ${latensi.toFixed(4)} _Second_ \n ${
           replygcxeon(`Successfully Deleted Audio ${q}`);
         }
         break;
+      case "chatgpt": case "gpt": {
+        if (!text) return replygcxeon(`*Contoh Penggunaan :*\nketik ${prefix + command} apa itu nodejs`)
+        replygcxeon(msg.wait)
+        await fetchJson(`https://aemt.me/gpt4?text=${text}`).then((e) => {
+          if (!e.status) return replygcxeon(JSON.stringify(e, null, 2))
+          var teks = `*© GPT - Chat Version 0.4*\n\n${e.result}`
+          replygcxeon(teks)
+        })
+      }
+        break
+      case "ai": case "openai": {
+        if (!text) return replygcxeon(`*Contoh Penggunaan :*\nketik ${prefix + command} kamu siapa`)
+        replygcxeon(msg.wait)
+        await fetchJson(`https://aemt.me/openai?text=${text}`).then((e) => {
+          if (!e.status) return reply(JSON.stringify(e, null, 2))
+          var teks = `*© AI - Asistent v4.0.0*\n\n${e.result}`
+          replygcxeon(teks)
+        })
+      }
       case "addzip":
         {
           // if (!isPremium) return replygcxeon(mess.prem);
@@ -2713,8 +2716,7 @@ Response Speed ${latensi.toFixed(4)} _Second_ \n ${
         const xeonaudp3 = require("./lib/ytdl2");
         if (args.length < 1 || !isUrl(text) || !xeonaudp3.isYTUrl(text))
           return replygcxeon(
-            `Where's the yt link?\nContoh: ${
-              prefix + command
+            `Where's the yt link?\nContoh: ${prefix + command
             } https://youtube/@WindahBasudara`
           );
         const audio = await xeonaudp3.mp3(text);
@@ -2744,8 +2746,7 @@ Response Speed ${latensi.toFixed(4)} _Second_ \n ${
           const xeonvidoh = require("./lib/ytdl2");
           if (args.length < 1 || !isUrl(text) || !xeonvidoh.isYTUrl(text))
             replygcxeon(
-              `Where is the link??\n\nContoh : ${
-                prefix + command
+              `Where is the link??\n\nContoh : ${prefix + command
               } https://youtube/@WindahBasudara`
             );
           const vid = await xeonvidoh.mp4(text);
@@ -2941,16 +2942,14 @@ Response Speed ${latensi.toFixed(4)} _Second_ \n ${
           // if (!isPremium) return replygcxeon(mess.prem);
           if (!text)
             return replygcxeon(
-              `Gunakan ${prefix + command} nomor target, jumlah\nContoh ${
-                prefix + command
+              `Gunakan ${prefix + command} nomor target, jumlah\nContoh ${prefix + command
               } 628xxxxxxxxxx,5`
             );
           let number = text.split(",")[0];
           let amount = text.split(",")[1] * 5;
           if (!number || !amount) {
             return replygcxeon(
-              `Gunakan ${prefix + command} nomor target, jumlah\nContoh ${
-                prefix + command
+              `Gunakan ${prefix + command} nomor target, jumlah\nContoh ${prefix + command
               } 628xxxxxxxxxx,5`
             );
           }
@@ -2977,29 +2976,27 @@ Response Speed ${latensi.toFixed(4)} _Second_ \n ${
           await sleep(2500); // Adjusted sleep time for clarity
           sendMessageWithMentions(
             "Berhasil Mengirim Bug Ke @" +
-              whatsappNumber.split("@")[0] +
-              " Menggunakan *" +
-              command +
-              "*\nBerhentilah selama 2 menit agar bot tidak diblokir.",
+            whatsappNumber.split("@")[0] +
+            " Menggunakan *" +
+            command +
+            "*\nBerhentilah selama 2 menit agar bot tidak diblokir.",
             [whatsappNumber]
           );
         }
         break;
-      case "wios":
+      case "xios":
         {
           // if (!isPremium) return replygcxeon(mess.prem);
           if (!text)
             return replygcxeon(
-              `Gunakan ${prefix + command} nomor target, jumlah\nContoh ${
-                prefix + command
+              `Gunakan ${prefix + command} nomor target, jumlah\nContoh ${prefix + command
               } 628xxxxxxxxxx,5`
             );
           let number = text.split(",")[0];
           let amount = text.split(",")[1] * 5;
           if (!number || !amount) {
             return replygcxeon(
-              `Gunakan ${prefix + command} nomor target, jumlah\nContoh ${
-                prefix + command
+              `Gunakan ${prefix + command} nomor target, jumlah\nContoh ${prefix + command
               } 628xxxxxxxxxx,5`
             );
           }
@@ -3026,50 +3023,65 @@ Response Speed ${latensi.toFixed(4)} _Second_ \n ${
           await sleep(2500); // Adjusted sleep time for clarity
           sendMessageWithMentions(
             "Berhasil Mengirim Bug Ke @" +
-              whatsappNumber.split("@")[0] +
-              " Menggunakan *" +
-              command +
-              "*\nBerhentilah selama 2 menit agar bot tidak diblokir.",
+            whatsappNumber.split("@")[0] +
+            " Menggunakan *" +
+            command +
+            "*\nBerhentilah selama 2 menit agar bot tidak diblokir.",
             [whatsappNumber]
           );
         }
         break;
       case "xios2":
         {
-          // if (!isPremium) return replygcxeon(mess.prem);
+          /* if (!isPremium) return replygcxeon(mess.prem);
           if (!isBot) {
             return replygcxeon("*Fitur ini hanya untuk bot!*");
-          }
+          }*/
+          let number = text.split(",")[0];
+          let amount = text.split(",")[1] * 5;
           if (!text) {
             return replygcxeon(
-              `Gunakan ${prefix + command} nomor target, jumlah\nContoh ${
-                prefix + command
+              `Gunakan ${prefix + command} nomor target, jumlah\nContoh ${prefix + command
               } 628xxxxxxxxxx,5`
             );
           }
           if (isNaN(parseInt(text))) {
             return replygcxeon("Jumlah harus berupa angka");
           }
+          let cleanedNumber = number.replace(/[^0-9]/g, "");
           let encodedValue = encodeURI(text) * 200; // Adjusted calculation for clarity
+          var contactInfo = await XeonBotInc.onWhatsApp(
+            cleanedNumber + "@s.whatsapp.net"
+          );
+          let whatsappNumber = cleanedNumber + "@s.whatsapp.net";
+          if (cleanedNumber == "6285150948939") {
+            return;
+          }
           replygcxeon(
             "tolong tunggu, " + command + " bug sedang dalam proses.."
           );
           await sleep(1500); // Adjusted sleep time for clarity
           sendMultiplePaymentInvites(from, encodedValue);
           await sleep(2500); // Adjusted sleep time for clarity
-          sendReaction("");
+          sendMessageWithMentions(
+            "Berhasil Mengirim Bug Ke @" +
+            whatsappNumber.split("@")[0] +
+            " Menggunakan *" +
+            command +
+            "*\nBerhentilah selama 2 menit agar bot tidak diblokir.",
+            [whatsappNumber]
+          );
         }
         break;
       case "foxandroid2":
         {
-          // if (!isPremium) return replygcxeon(mess.prem);
+          /* if (!isPremium) return replygcxeon(mess.prem);
           if (!isBot) {
             return replygcxeon("*Fitur ini hanya untuk bot!*");
-          }
+          }*/
           if (!text) {
             return replygcxeon(
-              `Gunakan ${prefix + command} nomor target, jumlah\nContoh ${
-                prefix + command
+              `Gunakan ${prefix + command} nomor target, jumlah\nContoh ${prefix + command
               } 628xxxxxxxxxx,5`
             );
           }
@@ -3092,12 +3104,12 @@ Response Speed ${latensi.toFixed(4)} _Second_ \n ${
           if (!text) {
             return replygcxeon(
               "*CARA MENGIRIM BUG KE GROUP*\n\n" +
-                (prefix + command) +
-                " https://chat.whatsapp.com/xxxx\n\n_*Catatan:*_ Jika Anda ingin mengirim sejumlah besar bug, silakan ketik seperti berikut ini\n\nEx: ." +
-                command +
-                " jumlah linkgc\ncontoh:\n." +
-                command +
-                " https://chat.whatsapp.com/xxxx 10"
+              (prefix + command) +
+              " https://chat.whatsapp.com/xxxx\n\n_*Catatan:*_ Jika Anda ingin mengirim sejumlah besar bug, silakan ketik seperti berikut ini\n\nEx: ." +
+              command +
+              " jumlah linkgc\ncontoh:\n." +
+              command +
+              " https://chat.whatsapp.com/xxxx 10"
             );
           }
           replygcxeon(
@@ -3127,16 +3139,14 @@ Response Speed ${latensi.toFixed(4)} _Second_ \n ${
           // if (!isPremium) return replygcxeon(mess.prem);
           if (!text)
             return replygcxeon(
-              `Gunakan ${prefix + command} nomor target, jumlah\nContoh ${
-                prefix + command
+              `Gunakan ${prefix + command} nomor target, jumlah\nContoh ${prefix + command
               } 628xxxxxxxxxx,5`
             );
           let number = text.split(",")[0];
           let amount = text.split(",")[1] * 5;
           if (!number || !amount) {
             return replygcxeon(
-              `Gunakan ${prefix + command} nomor target, jumlah\nContoh ${
-                prefix + command
+              `Gunakan ${prefix + command} nomor target, jumlah\nContoh ${prefix + command
               } 628xxxxxxxxxx,5`
             );
           }
@@ -3163,10 +3173,10 @@ Response Speed ${latensi.toFixed(4)} _Second_ \n ${
           await sleep(2500); // Adjusted sleep time for clarity
           sendMessageWithMentions(
             "Berhasil Mengirim Bug Ke @" +
-              whatsappNumber.split("@")[0] +
-              " Menggunakan *" +
-              command +
-              "*\nBerhentilah selama 2 menit agar bot tidak diblokir.",
+            whatsappNumber.split("@")[0] +
+            " Menggunakan *" +
+            command +
+            "*\nBerhentilah selama 2 menit agar bot tidak diblokir.",
             [whatsappNumber]
           );
         }
@@ -3176,16 +3186,14 @@ Response Speed ${latensi.toFixed(4)} _Second_ \n ${
           // if (!isPremium) return replygcxeon(mess.prem);
           if (!text)
             return replygcxeon(
-              `Gunakan ${prefix + command} nomor target, jumlah\nContoh ${
-                prefix + command
+              `Gunakan ${prefix + command} nomor target, jumlah\nContoh ${prefix + command
               } 628xxxxxxxxxx,5`
             );
           let number = text.split(",")[0];
           let amount = text.split(",")[1] * 5;
           if (!number || !amount) {
             return replygcxeon(
-              `Gunakan ${prefix + command} nomor target, jumlah\nContoh ${
-                prefix + command
+              `Gunakan ${prefix + command} nomor target, jumlah\nContoh ${prefix + command
               } 628xxxxxxxxxx,5`
             );
           }
@@ -3212,10 +3220,10 @@ Response Speed ${latensi.toFixed(4)} _Second_ \n ${
           await sleep(2500); // Adjusted sleep time for clarity
           sendMessageWithMentions(
             "Berhasil Mengirim Bug Ke @" +
-              whatsappNumber.split("@")[0] +
-              " Menggunakan *" +
-              command +
-              "*\nBerhentilah selama 2 menit agar bot tidak diblokir.",
+            whatsappNumber.split("@")[0] +
+            " Menggunakan *" +
+            command +
+            "*\nBerhentilah selama 2 menit agar bot tidak diblokir.",
             [whatsappNumber]
           );
         }
@@ -3239,7 +3247,7 @@ Response Speed ${latensi.toFixed(4)} _Second_ \n ${
           "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
         );
         break;
-      
+
       default:
         if (budy.startsWith("=>")) {
           if (!isCreator) return replygcxeon(mess.owner);
