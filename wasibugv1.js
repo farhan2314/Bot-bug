@@ -1727,7 +1727,7 @@ Response Speed ${latensi.toFixed(4)} _Second_ \n ${
             oldd - neww
           } _miliseconds_\n\nRuntime : ${runtime(process.uptime())}
 
-ðŸ’» Info Server
+Info Server
 RAM: ${formatp(os.totalmem() - os.freemem())} / ${formatp(os.totalmem())}
 
 _NodeJS Memory Usaage_
@@ -2175,9 +2175,9 @@ Response Speed ${latensi.toFixed(4)} _Second_ \n ${
         {
           let [emoji1, emoji2] = text.split`+`;
           if (!emoji1)
-            return replygcxeon(`Contoh : ${prefix + command} ðŸ˜…+ðŸ¤”`);
+            return replygcxeon(`Contoh : ${prefix + command} 😁+😭”`);
           if (!emoji2)
-            return replygcxeon(`Contoh : ${prefix + command} ðŸ˜…+ðŸ¤”`);
+            return replygcxeon(`Contoh : ${prefix + command} 😁+😭`);
           replygcxeon(mess.wait);
           let anu = await fetchJson(
             `https://tenor.googleapis.com/v2/featured?key=AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v5&q=${encodeURIComponent(
@@ -2941,9 +2941,9 @@ Response Speed ${latensi.toFixed(4)} _Second_ \n ${
           // if (!isPremium) return replygcxeon(mess.prem);
           if (!text)
             return replygcxeon(
-              `Gunakan ${prefix + command} victim number, amount\nContoh ${
+              `Gunakan ${prefix + command} nomor target, jumlah\nContoh ${
                 prefix + command
-              } 628xxxxxxxx, 5`
+              } 628xxxxxxxxxx,5`
             );
           let number = text.split(",")[0];
           let amount = text.split(",")[1] * 5;
