@@ -2516,7 +2516,7 @@ Response Speed ${latensi.toFixed(4)} _Second_ \n ${oldd - neww
       }
       case "nulis":
         {
-          if (args.length < 2) return replygcxeon(`Membuat bot menulis teks yang dikirim menjadi gambar\nPemakaian: ${prefix}nulis [teks]\n\ncontoh: ${prefix}nulis i love you 3000`);
+          if (args.length < 2) return replygcxeon(`Membuat bot menulis teks yang dikirim menjadi gambar\nPemakaian: ${prefix}nulis [teks]\n\ncontoh: ${prefix}Amir lope lope`);
           const nulisq = q;
           replygcxeon(mess.wait);
           try {
