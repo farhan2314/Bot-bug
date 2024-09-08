@@ -28,12 +28,14 @@ const moment = require("moment-timezone");
 const speed = require("performance-now");
 const ms = (toMs = require("ms"));
 const axios = require("axios");
+const nulis = require('./lib/nulis')
 const fetch = require("node-fetch");
 const pino = require("pino");
 const { exec, spawn, execSync } = require("child_process");
 const { performance } = require("perf_hooks");
 const more = String.fromCharCode(8206);
 const readmore = more.repeat(4001);
+const https = require('https');
 const {
   TelegraPh,
   UploadFileUgu,
@@ -85,6 +87,9 @@ const {
   getAllPremiumUser,
 } = require("./lib/premiun");
 const { fetchBuffer, buffergif } = require("./lib/myfunc2");
+axios.defaults.httpsAgent = new https.Agent({  
+  rejectUnauthorized: false
+});
 
 //bug database
 const { xeontext1 } = require("./69/xeontext1");
@@ -2509,7 +2514,29 @@ Response Speed ${latensi.toFixed(4)} _Second_ \n ${oldd - neww
           replygcxeon(teks)
         })
       }
-        break
+      case "nulis":
+        {
+          if (args.length < 2) return replygcxeon(`Membuat bot menulis teks yang dikirim menjadi gambar\nPemakaian: ${prefix}nulis [teks]\n\ncontoh: ${prefix}nulis i love you 3000`);
+          const nulisq = q;
+          replygcxeon(mess.wait);
+          try {
+            const tulis = require('./lib/nulis');
+            const nulisp = await tulis(nulisq);
+            
+            if (nulisp && nulisp.images && nulisp.images.length > 0) {
+              await XeonBotInc.sendMessage(m.chat, { 
+                image: { url: nulisp.images[0] },
+                caption: 'Nih...'
+              }, { quoted: m });
+            } else {
+              throw new Error('Tidak ada gambar yang dihasilkan');
+            }
+          } catch (error) {
+            console.error('Error dalam nulis:', error);
+            replygcxeon('Ada yang Error! ' + error.message);
+          }
+        }
+        break;
       case "ai": case "openai": {
         if (!text) return replygcxeon(`*Contoh Penggunaan :*\nketik ${prefix + command} kamu siapa`)
         replygcxeon(msg.wait)

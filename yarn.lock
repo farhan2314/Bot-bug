@@ -33,10 +33,10 @@
     "@ffmpeg-installer/win32-ia32" "4.1.0"
     "@ffmpeg-installer/win32-x64" "4.1.0"
 
-"@ffmpeg-installer/linux-x64@4.1.0":
+"@ffmpeg-installer/win32-x64@4.1.0":
   version "4.1.0"
-  resolved "https://registry.npmjs.org/@ffmpeg-installer/linux-x64/-/linux-x64-4.1.0.tgz"
-  integrity sha512-Y5BWhGLU/WpQjOArNIgXD3z5mxxdV8c41C+U15nsE5yF8tVcdCGet5zPs5Zy3Ta6bU7haGpIzryutqCGQA/W8A==
+  resolved "https://registry.npmjs.org/@ffmpeg-installer/win32-x64/-/win32-x64-4.1.0.tgz"
+  integrity sha512-Drt5u2vzDnIONf4ZEkKtFlbvwj6rI3kxw1Ck9fpudmtgaZIHD4ucsWB2lCZBXRxJgXR+2IMSti+4rtM4C4rXgg==
 
 "@hapi/boom@^10.0.1":
   version "10.0.1"
@@ -2100,6 +2100,11 @@ nth-check@^2.0.1:
   integrity sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==
   dependencies:
     boolbase "^1.0.0"
+
+nulis@^0.0.0:
+  version "0.0.0"
+  resolved "https://registry.npmjs.org/nulis/-/nulis-0.0.0.tgz"
+  integrity sha512-UoBjZACFkWoBTXVT7mpBEiREulacg11w+84vWErrb+i47Dber3/D7sjuQJgt7BjMU3XAKfb4EToXbY2pf+6LQQ==
 
 number-is-nan@^1.0.0:
   version "1.0.1"
