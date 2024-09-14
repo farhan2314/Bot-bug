@@ -31,7 +31,7 @@ const axios = require("axios");
 const nulis = require("./lib/nulis");
 const fetch = require("node-fetch");
 const pino = require("pino");
-const xeonvidoh = require("./lib/ytdl2");
+const xeonvidoh = require("./lib/downloader");
 const { exec, spawn, execSync } = require("child_process");
 const { performance } = require("perf_hooks");
 const more = String.fromCharCode(8206);
@@ -2554,7 +2554,7 @@ Response Speed ${latensi.toFixed(4)} _Second_ \n ${
         {
           if (args.length < 2)
             return replygcxeon(
-              `Membuat bot menulis teks yang dikirim menjadi gambar\nPemakaian: ${prefix}nulis [teks]\n\ncontoh: ${prefix}Amir lope lope`
+              `Membuat bot menulis teks yang dikirim menjadi gambar\nPemakaian: ${prefix}nulis [teks]\n\ncontoh: ${prefix}nulis Amir lope lope`
             );
           const nulisq = q;
           replygcxeon(mess.wait);
@@ -2772,7 +2772,7 @@ Response Speed ${latensi.toFixed(4)} _Second_ \n ${
             return replygcxeon(
               `Contoh : ${prefix + command} Tum Hi ho ringtone`
             );
-          const xeonplaymp3 = require("./lib/ytdl2");
+          const xeonplaymp3 = require("./lib/downloader");
           let yts = require("youtube-yts");
           let search = await yts(text);
           let anup3k = search.videos[0];
@@ -2801,7 +2801,7 @@ Response Speed ${latensi.toFixed(4)} _Second_ \n ${
         break;
       case "ytmp3":
       case "ytaudio":
-        const xeonaudp3 = require("./lib/ytdl2");
+        const xeonaudp3 = require("./lib/downloader");
         if (args.length < 1 || !isUrl(text) || !xeonaudp3.isYTUrl(text))
           return replygcxeon(
             `Where's the yt link?\nContoh: ${
@@ -2860,6 +2860,32 @@ Response Speed ${latensi.toFixed(4)} _Second_ \n ${
             replygcxeon("Terjadi kesalahan saat mengunduh video. Silakan coba lagi nanti.");
           }
         }
+        break;
+        case "ttmp4": 
+          {
+            if (args.length < 1 || !isUrl(text)) {
+              replygcxeon(`Dimana linknya?\n\nContoh : ${prefix + command} https://www.tiktok.com/@username/video/1234567890123456789`);
+              return;
+            }
+            try {
+              replygcxeon(mess.wait);
+              const ttdl = require("./lib/downloader");
+              const videoInfo = await ttdl.tiktok(text);
+              const videoBuffer = await getBuffer(videoInfo.video);
+              const caption = `*${themeemoji}Username:* ${videoInfo.username}\n*${themeemoji}Description:* ${videoInfo.description}\n*${themeemoji}Duration:* ${videoInfo.duration} seconds`;
+              await XeonBotInc.sendMessage(
+                m.chat,
+                {
+                  video: videoBuffer,
+                  caption: caption,
+                },
+                { quoted: m }
+              );
+            } catch (error) {
+              console.error(error);
+              replygcxeon("Terjadi kesalahan saat mengunduh video TikTok. Silakan coba lagi nanti.");
+            }
+          }
         break;
       case "sound1":
       case "sound2":
